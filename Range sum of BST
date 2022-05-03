@@ -1,0 +1,31 @@
+938. Range Sum of BST:
+Given the root node of a binary search tree and two integers low and high, return the sum of values of all nodes with a value in the inclusive range [low, high].
+
+https://assets.leetcode.com/uploads/2020/11/05/bst1.jpg
+
+Example 1:
+
+Input: root = [10,5,15,3,7,null,18], low = 7, high = 15
+Output: 32
+Explanation: Nodes 7, 10, and 15 are in the range [7, 15]. 7 + 10 + 15 = 32.
+
+sol:
+
+Approach:
+First add all the binary tree elements into the list,To add the elements use inorder traversal.Check all the elements in the list whether they are in the range or not.if thery are in the range add it to the sum.
+
+class Solution:
+    def rangeSumBST(self, root: Optional[TreeNode], low: int, high: int) -> int:
+        l=[]
+        def inorder(self,root):
+            if(root is not None):
+                inorder(self,root.left)
+                l.append(root.val)
+                inorder(self,root.right)
+            return(l)
+        ans=inorder(self,root)
+        sum=0
+        for i in range(len(ans)):
+            if(ans[i]>=low and ans[i]<=high):
+                sum=sum+ans[i]
+        return(sum)
